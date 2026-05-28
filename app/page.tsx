@@ -1,65 +1,282 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+const services = [
+  {
+    n: "01",
+    name: "Kitchen Remodels",
+    desc: "Full kitchen renovations — cabinets, countertops, lighting, and layout changes managed end to end.",
+  },
+  {
+    n: "02",
+    name: "Bathroom Renovations",
+    desc: "Tile, fixtures, vanities, and waterproofing — built to last in Florida humidity.",
+  },
+  {
+    n: "03",
+    name: "Room Additions",
+    desc: "Permitted square-footage additions tied cleanly into your existing structure.",
+  },
+  {
+    n: "04",
+    name: "Interior Renovations",
+    desc: "Flooring, drywall, paint, and trim — whole-home interior refreshes on schedule.",
+  },
+  {
+    n: "05",
+    name: "Repairs & Restoration",
+    desc: "Water damage, structural repairs, and post-storm restoration handled in-house.",
+  },
+  {
+    n: "06",
+    name: "Permitting",
+    desc: "We pull permits, schedule inspections, and manage code compliance for you.",
+  },
+];
+
+const trustPills = [
+  "LIC · CBC1265964",
+  "FULLY INSURED",
+  "FAMILY OWNED",
+  "ORLANDO AREA",
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main>
+      {/* ===== HERO ===== */}
+      <section
+        className="hero-bg flex w-full items-center justify-center px-4 sm:px-6 lg:px-8"
+        style={{
+          minHeight: "45vh",
+          borderBottom: "1px solid #2A2A2A",
+          paddingTop: 96,
+          paddingBottom: 96,
+        }}
+      >
+        <div className="flex max-w-3xl flex-col items-center text-center">
+          <p className="eyebrow mb-5">General Contractor · Orlando, FL</p>
+
+          <h1
+            className="mb-6 text-[44px] md:text-[64px]"
+            style={{ color: "#E8E8E8", fontWeight: 700, lineHeight: 1.05 }}
+          >
+            Your Home, Done Right.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p
+            className="hero-subtext mb-10"
+            style={{
+              color: "#999",
+              fontSize: 16,
+              lineHeight: 1.8,
+              maxWidth: 560,
+            }}
+          >
+            Kitchen remodels, bathroom renovations, room additions, and repairs
+            — managed start to finish by a licensed, insured family contractor.
           </p>
+
+          <ul className="mb-12 flex flex-wrap justify-center gap-2">
+            {trustPills.map((pill) => (
+              <li key={pill} className="trust-pill">
+                {pill}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mb-0 flex flex-col items-center gap-3 sm:flex-row">
+            <Link href="/contact" className="cta-primary">
+              Get a Free Quote
+            </Link>
+            <Link href="#projects" className="cta-secondary">
+              View Our Work
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* ===== STAT BAR ===== */}
+      <section
+        className="w-full"
+        style={{ backgroundColor: "#0A0A0A", height: 80 }}
+      >
+        <div className="mx-auto grid h-full max-w-6xl grid-cols-2 md:grid-cols-4">
+          {[
+            { value: "CBC1265964", label: "FL LICENSE" },
+            { value: "Insured", label: "FULLY COVERED" },
+            { value: "Family", label: "OWNED & OPERATED" },
+            { value: "407-408-4806", label: "CALL OR TEXT" },
+          ].map((stat, i, arr) => (
+            <div
+              key={stat.label}
+              className="flex flex-col items-center justify-center text-center"
+              style={{
+                borderRight:
+                  i < arr.length - 1 ? "1px solid #1E1E1E" : undefined,
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "var(--font-oswald), system-ui, sans-serif",
+                  color: "#C8C8C8",
+                  fontSize: 18,
+                  fontWeight: 700,
+                  letterSpacing: 0,
+                  lineHeight: 1,
+                }}
+              >
+                {stat.value}
+              </div>
+              <div
+                className="mt-2"
+                style={{
+                  fontFamily: "var(--font-source-sans), system-ui, sans-serif",
+                  color: "#555",
+                  fontSize: 9,
+                  letterSpacing: 2,
+                  textTransform: "uppercase",
+                  fontWeight: 600,
+                }}
+              >
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ===== SERVICES ===== */}
+      <section
+        className="w-full px-4 sm:px-6 lg:px-8"
+        style={{
+          backgroundColor: "#141414",
+          paddingTop: 96,
+          paddingBottom: 96,
+        }}
+      >
+        <div className="mx-auto max-w-6xl">
+          <div>
+            <p className="eyebrow">What We Do</p>
+            <h2
+              className="mt-3 text-[32px] md:text-[42px]"
+              style={{ color: "#D0D0D0" }}
+            >
+              Residential renovation, done professionally
+            </h2>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {services.map((s) => (
+              <div key={s.n} className="service-card">
+                <span className="card-watermark">{s.n}</span>
+                <h3 style={{ color: "#D0D0D0", fontSize: 20, fontWeight: 500 }}>
+                  {s.name}
+                </h3>
+                <p
+                  className="mt-3"
+                  style={{
+                    color: "#777",
+                    fontSize: 14,
+                    fontWeight: 400,
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {s.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PHOTO GRID ===== */}
+      <section
+        id="projects"
+        className="w-full px-4 sm:px-6 lg:px-8"
+        style={{
+          backgroundColor: "#0F0F0F",
+          paddingTop: 96,
+          paddingBottom: 96,
+        }}
+      >
+        <div className="mx-auto max-w-6xl">
+          <div>
+            <p className="eyebrow">Our Work</p>
+            <h2
+              className="mt-3 text-[32px] md:text-[42px]"
+              style={{ color: "#D0D0D0" }}
+            >
+              Recent projects
+            </h2>
+          </div>
+
+          {/* Replace these divs with <Image> components when photos are ready */}
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="flex items-center justify-center"
+                style={{
+                  backgroundColor: "#1A1A1A",
+                  border: "0.5px dashed #2A2A2A",
+                  borderRadius: 4,
+                  height: 280,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily:
+                      "var(--font-source-sans), system-ui, sans-serif",
+                    color: "#2A2A2A",
+                    fontSize: 11,
+                    letterSpacing: 2,
+                    textTransform: "uppercase",
+                    fontWeight: 600,
+                  }}
+                >
+                  Photo coming soon
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CONTACT CTA STRIP ===== */}
+      <section
+        className="w-full px-4 text-center"
+        style={{
+          backgroundColor: "#111",
+          borderTop: "1px solid #1E1E1E",
+          paddingTop: 96,
+          paddingBottom: 96,
+        }}
+      >
+        <h2
+          style={{
+            color: "#D0D0D0",
+            fontSize: 36,
+            fontWeight: 700,
+          }}
+        >
+          Ready to start your project?
+        </h2>
+        <p
+          className="mt-4"
+          style={{
+            fontFamily: "var(--font-oswald), system-ui, sans-serif",
+            color: "#B0B0B0",
+            fontSize: 28,
+            fontWeight: 400,
+            letterSpacing: 2,
+          }}
+        >
+          407-408-4806
+        </p>
+        <Link href="/contact" className="cta-link mt-4 inline-block">
+          Or request a quote online →
+        </Link>
+      </section>
+    </main>
   );
 }
