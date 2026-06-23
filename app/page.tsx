@@ -210,32 +210,45 @@ export default function HomePage() {
             </h2>
           </div>
 
-          {/* Replace these divs with <Image> components when photos are ready */}
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {[0, 1, 2].map((i) => (
-              <div
-                key={i}
-                className="flex items-center justify-center"
-                style={{
-                  backgroundColor: "#1A1A1A",
-                  border: "0.5px dashed #2A2A2A",
-                  borderRadius: 4,
-                  height: 280,
-                }}
-              >
-                <span
+            {[
+              {
+                src: "/images/shower-after.PNG",
+                title: "Kitchen & Shower Remodel",
+              },
+              {
+                src: "/images/patio-after.jpg",
+                title: "Enclosed Back Patio",
+              },
+              {
+                src: "/images/entertainment-after.jpg",
+                title: "Built-In Entertainment Center",
+              },
+            ].map((tile) => (
+              <div key={tile.title}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={tile.src}
+                  alt={tile.title}
+                  style={{
+                    width: "100%",
+                    height: 280,
+                    objectFit: "cover",
+                    borderRadius: 4,
+                    display: "block",
+                  }}
+                />
+                <p
+                  className="mt-3"
                   style={{
                     fontFamily:
                       "var(--font-source-sans), system-ui, sans-serif",
-                    color: "#2A2A2A",
-                    fontSize: 11,
-                    letterSpacing: 2,
-                    textTransform: "uppercase",
-                    fontWeight: 600,
+                    color: "#777",
+                    fontSize: 12,
                   }}
                 >
-                  Photo coming soon
-                </span>
+                  {tile.title}
+                </p>
               </div>
             ))}
           </div>

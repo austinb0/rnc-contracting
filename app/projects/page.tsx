@@ -1,5 +1,26 @@
 import Link from "next/link";
 
+const projects = [
+  {
+    title: "Kitchen & Shower Remodel",
+    desc: "Full kitchen and shower renovation",
+    before: "/images/shower-before.PNG",
+    after: "/images/shower-after.PNG",
+  },
+  {
+    title: "Enclosed Back Patio",
+    desc: "Back porch converted to enclosed patio addition",
+    before: "/images/patio-before.jpg",
+    after: "/images/patio-after.jpg",
+  },
+  {
+    title: "Built-In Entertainment Center",
+    desc: "Custom wall-built entertainment center",
+    before: "/images/entertainment-before.jpg",
+    after: "/images/entertainment-after.jpg",
+  },
+];
+
 export default function ProjectsPage() {
   return (
     <main>
@@ -32,12 +53,12 @@ export default function ProjectsPage() {
               maxWidth: 560,
             }}
           >
-            Photos coming soon — check back as we document completed work.
+            A look at recent renovations — before and after.
           </p>
         </div>
       </section>
 
-      {/* ===== PHOTO GRID ===== */}
+      {/* ===== PROJECT SHOWCASES ===== */}
       <section
         className="w-full px-4 sm:px-6 lg:px-8"
         style={{
@@ -46,32 +67,67 @@ export default function ProjectsPage() {
           paddingBottom: 96,
         }}
       >
-        {/* Replace these divs with <Image> components when photos are ready */}
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="flex items-center justify-center"
-              style={{
-                backgroundColor: "#1A1A1A",
-                border: "0.5px dashed #2A2A2A",
-                borderRadius: 4,
-                height: 280,
-              }}
-            >
-              <span
+        <div className="mx-auto max-w-6xl">
+          {projects.map((p) => (
+            <div key={p.title} style={{ marginBottom: 80 }}>
+              <h2
                 style={{
-                  fontFamily:
-                    "var(--font-source-sans), system-ui, sans-serif",
-                  color: "#2A2A2A",
-                  fontSize: 11,
-                  letterSpacing: 2,
-                  textTransform: "uppercase",
-                  fontWeight: 600,
+                  fontFamily: "var(--font-oswald), system-ui, sans-serif",
+                  color: "#D0D0D0",
+                  fontSize: 22,
+                  fontWeight: 700,
                 }}
               >
-                Photo coming soon
-              </span>
+                {p.title}
+              </h2>
+              <p
+                className="mt-2"
+                style={{
+                  fontFamily: "var(--font-source-sans), system-ui, sans-serif",
+                  color: "#777",
+                  fontSize: 14,
+                }}
+              >
+                {p.desc}
+              </p>
+
+              <div
+                className="mt-6 grid grid-cols-2"
+                style={{ gap: 8 }}
+              >
+                {[
+                  { label: "BEFORE", src: p.before },
+                  { label: "AFTER", src: p.after },
+                ].map((slot) => (
+                  <div key={slot.label}>
+                    <p
+                      style={{
+                        fontFamily:
+                          "var(--font-source-sans), system-ui, sans-serif",
+                        color: "#555",
+                        fontSize: 10,
+                        fontWeight: 600,
+                        letterSpacing: 2,
+                        marginBottom: 8,
+                      }}
+                    >
+                      {slot.label}
+                    </p>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={slot.src}
+                      alt={`${p.title} — ${slot.label.toLowerCase()}`}
+                      style={{
+                        width: "100%",
+                        height: 280,
+                        objectFit: "cover",
+                        borderRadius: 4,
+                        display: "block",
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
