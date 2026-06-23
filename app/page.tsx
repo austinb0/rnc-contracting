@@ -232,8 +232,9 @@ export default function HomePage() {
                   alt={tile.title}
                   style={{
                     width: "100%",
-                    height: 280,
+                    height: 360,
                     objectFit: "cover",
+                    objectPosition: "center top",
                     borderRadius: 4,
                     display: "block",
                   }}
