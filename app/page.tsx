@@ -224,20 +224,30 @@ export default function HomePage() {
                 src: "/images/entertainment-after.jpg",
                 title: "Built-In Entertainment Center",
               },
-            ].map((tile) => (
-              <div key={tile.title}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={tile.src}
-                  alt={tile.title}
-                  style={{
+            ].map((tile) => {
+              const isPortrait = tile.src.includes("shower");
+              const imgStyle: React.CSSProperties = isPortrait
+                ? {
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                    borderRadius: 4,
+                  }
+                : {
                     width: "100%",
                     height: 360,
                     objectFit: "cover",
                     objectPosition: "center top",
                     borderRadius: 4,
                     display: "block",
-                  }}
+                  };
+              return (
+              <div key={tile.title}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={tile.src}
+                  alt={tile.title}
+                  style={imgStyle}
                 />
                 <p
                   className="mt-3"
@@ -251,7 +261,8 @@ export default function HomePage() {
                   {tile.title}
                 </p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

@@ -119,11 +119,12 @@ export default function ProjectsPage() {
                       alt={`${p.title} — ${slot.label.toLowerCase()}`}
                       style={{
                         width: "100%",
-                        height: 360,
-                        objectFit: "cover",
-                        objectPosition: "center top",
-                        borderRadius: 4,
+                        height: "auto",
                         display: "block",
+                        borderRadius: 4,
+                        ...(slot.src.includes("shower")
+                          ? { objectPosition: "center bottom" }
+                          : {}),
                       }}
                     />
                   </div>
