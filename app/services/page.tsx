@@ -29,7 +29,6 @@ const services = [
     desc: "Need more space? We design and build permitted additions that look like they were part of the original house. Foundation work, framing, roofing, and finishes — all coordinated under one contract and one set of plans.",
     items: [
       "Master suite and bedroom additions",
-      "Second-story expansions",
       "Sunroom and Florida room buildouts",
       "Engineered plans and full permitting",
     ],
